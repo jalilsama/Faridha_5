@@ -1,16 +1,16 @@
-import 'package:provider/provider.dart';
+import 'package:faridha/page/Important_Info.dart';
+import 'package:faridha/page/counter_page.dart';
 import 'package:faridha/data/drawer_items.dart';
 import 'package:faridha/model/drawer_item.dart';
-import 'package:faridha/page/Important_Info.dart';
-import 'package:faridha/page/Settings/settings_page.dart';
-import 'package:faridha/page/counter_page.dart';
 import 'package:faridha/page/holy_places.dart';
 import 'package:faridha/page/miqat_page.dart';
+import 'package:faridha/page/nearby_page.dart';
+import 'package:faridha/page/Settings//settings_page.dart';
 import 'package:faridha/page/supplications_page.dart';
 import 'package:faridha/provider/navigation_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:faridha/provider/navigation_provider.dart';
-import 'package:faridha/page/nearby_page.dart';
+import 'package:provider/provider.dart';
+
 import '../main.dart';
 
 
@@ -26,23 +26,23 @@ class NavigationDrawerWidget extends StatelessWidget {
     final isCollapsed = provider.isCollapsed;
 
     return Container(
-      width: isCollapsed ? MediaQuery.of(context).size.width * 0.2 : null,
+      width: isCollapsed ? MediaQuery.of(context).size.width * 0.2 : null,//set the with
       child: Drawer(
         child: Container(
-          color: Color(0xff068430),
+          color: Color.fromRGBO(0, 128, 128, 10),
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.symmetric(vertical: 14).add(safeArea),
                 width: double.infinity,
                 color: Colors.white12,
-                child: buildHeader(isCollapsed),
+
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 14),
               buildList(items: itemsFirst, isCollapsed: isCollapsed),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 14),
               Divider(color: Colors.white70),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 14),//احذف الرقم وال(الطول)
               buildList(
                 indexOffset: itemsFirst.length,
                 items: itemsSecond,
@@ -50,7 +50,7 @@ class NavigationDrawerWidget extends StatelessWidget {
               ),
               Spacer(),
               buildCollapseIcon(context, isCollapsed),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 12),
             ],
           ),
         ),
@@ -68,7 +68,7 @@ class NavigationDrawerWidget extends StatelessWidget {
         shrinkWrap: true,
         primary: false,
         itemCount: items.length,
-        separatorBuilder: (context, index) => SizedBox(height: 10,),
+        separatorBuilder: (context, index) => SizedBox(),
         itemBuilder: (context, index) {
           final item = items[index];
 
@@ -86,7 +86,7 @@ class NavigationDrawerWidget extends StatelessWidget {
       builder: (context) => page,
     ));
 
-    Navigator.of(context).pop();
+    //Navigator.of(context).pop();
 
     switch (index) {
       case 0:
@@ -169,17 +169,5 @@ class NavigationDrawerWidget extends StatelessWidget {
     );
   }
 
-  Widget buildHeader(bool isCollapsed) => isCollapsed
-      ? FlutterLogo(size: 48)
-      : Row(
-    children: [
-      const SizedBox(width: 24),
-      //FlutterLogo(size: 48),
-      const SizedBox(width:70),
-      Text(
-        'Faridha',
-        style: TextStyle(fontSize: 32, color: Colors.white),
-      ),
-    ],
-  );
+
 }

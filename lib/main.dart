@@ -1,21 +1,25 @@
 // @dart=2.9
-import 'package:faridha/page/Laoding/splaash_screen.dart';
-import 'package:faridha/page/counter_page.dart';
-import 'package:faridha/page/haij_page.dart';
+import 'dart:ui';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:faridha/page/Hajj//haij_page.dart';
+import 'package:faridha/page/Hajj/type_of_haij.dart';
 import 'package:faridha/page/holy_places.dart';
 import 'package:faridha/page/miqat_page.dart';
+import 'package:faridha/page/nearby_page.dart';
 import 'package:faridha/page/supplications_page.dart';
-import 'package:faridha/page/umra_page.dart';
+import 'package:faridha/page/Umrah//umra_page.dart';
+import 'package:faridha/page/counter_page.dart';
 import 'package:faridha/provider/navigation_provider.dart';
+import 'package:faridha/widget/navigation_drawer_widget.dart';
 import 'package:faridha/widget/navigation_drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-
-// this the page in the app
+// import 'lang/sit_localizations.dart';
+// import 'lang/sit_localizations_delegate.dart';
+// this the page in the app the last edit 27\9\2021
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
@@ -27,7 +31,7 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Navigation Drawer';
+  static final String title = 'Faridha';
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
@@ -35,8 +39,24 @@ class MyApp extends StatelessWidget {
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: title,
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: SplashScreen(),
+      localizationsDelegates: [
+
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        // The order of this list matters. By default, if the
+        // device's locale doesn't exactly match a locale in
+        // supportedLocales then the first locale in
+        // supportedLocales with a matching
+        // Locale.languageCode is used. If that fails then the
+        // first locale in supportedLocales is used.
+        const Locale('en'),
+        const Locale('ar'),
+      ],
+      theme: ThemeData(primarySwatch: Colors.teal),
+      home: MainPage(),
     ),
   );
 }
@@ -49,15 +69,15 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
 
-  Material MyItems( IconData icon,String heading,int color) {
+  Material MyItemsNearBy( IconData icon,String heading,int color) {
 
     return Material(
       color:Colors.white,
       elevation: 14.0,
-      shadowColor:Color(0x8021F336),
+      shadowColor:Color.fromRGBO(0, 128, 128, 5),
       borderRadius:BorderRadius.circular(24.0),
       child: FlatButton(onPressed:(){
-        Navigator.push(context,new MaterialPageRoute(builder: (context)=>UmraPage()), );
+        Navigator.push(context,new MaterialPageRoute(builder: (context)=>NearBy()), );
       },
         splashColor: Colors.green,
         shape: RoundedRectangleBorder(
@@ -101,7 +121,7 @@ class MainPageState extends State<MainPage> {
     return Material(
       color:Colors.white,
       elevation: 14.0,
-      shadowColor:Color(0x8021F336),
+      shadowColor:Color.fromRGBO(0, 128, 128, 5),
       borderRadius:BorderRadius.circular(24.0),
       child: FlatButton(onPressed:(){
         Navigator.push(context,new MaterialPageRoute(builder: (context)=>UmraPage()), );
@@ -143,7 +163,7 @@ class MainPageState extends State<MainPage> {
         ),),
     );
   }
-  Material MyItemsHaij( IconData icon,String heading,int color) {
+  /* Material MyItemsFaridha( IconData icon,String heading,int color) {
 
     return Material(
       color:Colors.white,
@@ -151,7 +171,54 @@ class MainPageState extends State<MainPage> {
       shadowColor:Color(0x8021F336),
       borderRadius:BorderRadius.circular(24.0),
       child: FlatButton(onPressed:(){
-        Navigator.push(context,new MaterialPageRoute(builder: (context)=>HaijPage()), );
+        Navigator.push(context,new MaterialPageRoute(builder: (context)=>SelectFaridhaPage()), );
+      },
+        splashColor: Colors.green,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24.0)),
+        child:Center(
+          child:Padding(
+            padding:const EdgeInsets.all(8.0),
+
+
+            child:Row(
+              mainAxisAlignment:MainAxisAlignment.center,
+              children:[
+                Column(
+                  mainAxisAlignment:MainAxisAlignment.center,
+                  children:[
+                    //text
+                    Text(heading,
+                      style:TextStyle(
+                        color: new Color(color),
+                        fontSize:18.0,
+                      ),),
+                    //icon
+                    Material(
+                      color:new Color(color),
+                      borderRadius:BorderRadius.circular(24.0),
+                      child:Padding(
+                          padding:const EdgeInsets.all(12.0),
+                          child:Icon(icon,color:Colors.white,
+                            size:25.0,)
+                      ),),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),),
+    );
+  }*/
+  Material MyItemsHaij( IconData icon,String heading,int color) {
+
+    return Material(
+      color:Colors.white,
+      elevation: 14.0,
+      shadowColor:Color.fromRGBO(0, 128, 128, 5),
+      borderRadius:BorderRadius.circular(24.0),
+      child: FlatButton(onPressed:(){
+        Navigator.push(context,new MaterialPageRoute(builder: (context)=>TypeOfHaij()), );
       },
         splashColor: Colors.green,
         shape: RoundedRectangleBorder(
@@ -195,7 +262,7 @@ class MainPageState extends State<MainPage> {
     return Material(
       color:Colors.white,
       elevation: 14.0,
-      shadowColor:Color(0x8021F336),
+      shadowColor:Color.fromRGBO(0, 128, 128, 5),
       borderRadius:BorderRadius.circular(24.0),
       child: FlatButton(onPressed:(){
         Navigator.push(context,new MaterialPageRoute(builder: (context)=> CounterPage()), );
@@ -242,7 +309,7 @@ class MainPageState extends State<MainPage> {
     return Material(
       color:Colors.white,
       elevation: 14.0,
-      shadowColor:Color(0x8021F336),
+      shadowColor:Color.fromRGBO(0, 128, 128, 5),
       borderRadius:BorderRadius.circular(24.0),
       child: FlatButton(onPressed:(){
         Navigator.push(context,new MaterialPageRoute(builder: (context)=>SupplicationsPage()), );
@@ -289,7 +356,7 @@ class MainPageState extends State<MainPage> {
     return Material(
       color:Colors.white,
       elevation: 14.0,
-      shadowColor:Color(0x8021F336),
+      shadowColor:Color.fromRGBO(0, 128, 128, 5),
       borderRadius:BorderRadius.circular(24.0),
       child: FlatButton(onPressed:(){
         Navigator.push(context,new MaterialPageRoute(builder: (context)=>HolyPlaces()), );
@@ -332,13 +399,14 @@ class MainPageState extends State<MainPage> {
     );
   }
   Material MyItemsMiqat( IconData icon,String heading,int color) {
+
     return Material(
       color:Colors.white,
       elevation: 14.0,
-      shadowColor:Color(0x8021F336),
+      shadowColor:Color.fromRGBO(0, 128, 128, 5),
       borderRadius:BorderRadius.circular(24.0),
       child: FlatButton(onPressed:(){
-        Navigator.push(context,new MaterialPageRoute(builder: (context)=> MiqatPage()), );
+        Navigator.push(context,new MaterialPageRoute(builder: (context)=>MiqatPage()), );
       },
         splashColor: Colors.green,
         shape: RoundedRectangleBorder(
@@ -380,9 +448,9 @@ class MainPageState extends State<MainPage> {
   Material MyItemsTime( String heading,) {
 
     return Material(
-      color:Colors.green,
+      color:Colors.teal,
       elevation: 14.0,
-      shadowColor:Color(0x8021F336),
+      shadowColor:Color.fromRGBO(0, 128, 128, 5),
       borderRadius:BorderRadius.circular(24.0),
 
       child: Center(
@@ -398,19 +466,19 @@ class MainPageState extends State<MainPage> {
                 children:[
                   Text(
                     DateFormat.jm().format(DateTime.now()),
-                    style: TextStyle( color: Colors.white,
-                      fontSize:25, ),),
+                    style: TextStyle(
+                        fontSize:25, color: Colors.white),),
 
                   //text
                   Material(
-                    color:Colors.green,
+                    color: Colors.teal,
                     borderRadius:BorderRadius.circular(24.0),
                     child:Padding(
                       padding:const EdgeInsets.all(16.0),
                       child: Text(
                         DateFormat.yMMMEd().format(DateTime.now()),
-                        style: TextStyle( color: Colors.white,
-                          fontSize:25, ),),
+                        style: TextStyle(
+                            fontSize:25, color: Colors.white ),),
                     ),),
                 ],
               ),
@@ -422,14 +490,14 @@ class MainPageState extends State<MainPage> {
 
     );
   }
-
   @override
   Widget build(BuildContext context) => Scaffold(
     drawer: NavigationDrawerWidget(),
     appBar: AppBar(
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.teal,
       title: Text('Faridha'),
       centerTitle: true,
+
     ),
     body:StaggeredGridView.count(
       crossAxisCount:2,
@@ -438,23 +506,25 @@ class MainPageState extends State<MainPage> {
       padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 8.0,),
       children:[
         MyItemsTime("Date",),
-        MyItemsUmra(Icons.account_circle_rounded,"Umrah",0xFF4CAF50),
-        MyItemsHaij(Icons.account_circle_rounded,"haij",0xFF4CAF50),
-        MyItemsCounter(Icons.alarm_add,"Counter",0xFF4CAF50),
-        MyItemsSupp(Icons.article,"Supplications",0xFF4CAF50),
-        MyItemsHoly(Icons.location_on,"Holy places",0xFF4CAF50),
-        MyItemsMiqat(Icons.bathtub_sharp,"Miqat",0xFF4CAF50),
-
+        //MyItemsFaridha(Icons.account_circle_rounded,"Select type of Faridha",0xFF4CAF50),
+        MyItemsUmra(Icons.account_circle_rounded,"Umrah",11111122222222222),
+        MyItemsHaij(Icons.account_circle_rounded,"haij",11111122222222222),
+        MyItemsCounter(Icons.alarm_add,"Counter",11111122222222222),
+        MyItemsSupp(Icons.article,"Supplications",11111122222222222),
+        MyItemsHoly(Icons.location_on,"Holy places",11111122222222222),
+        MyItemsMiqat(Icons.bathtub_sharp,"Miqat",11111122222222222),
+        MyItemsNearBy(Icons.near_me,"NearBy",11111122222222222),
       ],
       staggeredTiles: [
         StaggeredTile.extent(2, 150.0),
+        //StaggeredTile.extent(2, 150.0),
         StaggeredTile.extent(1, 150.0),
         StaggeredTile.extent(1, 150.0),
         StaggeredTile.extent(1, 150.0),
         StaggeredTile.extent(1, 150.0),
         StaggeredTile.extent(1, 150.0),
         StaggeredTile.extent(1, 150.0),
-
+        StaggeredTile.extent(1, 150.0),
 
       ],
     ),

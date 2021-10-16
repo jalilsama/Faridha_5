@@ -37,7 +37,7 @@ class ImportantInfo extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                     Radius.circular(8.0) //                 <--- border radius here
                 ),        ),
-              child: const Center(child:Text('Police assistance: 999/ 911.ُ ', textDirection: TextDirection.ltr,
+              child: const Center(child:Text('Police assistance: 999/ 911.', textDirection: TextDirection.ltr,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black,),),),),),
           Padding(
             padding: const EdgeInsets.all(8.0),

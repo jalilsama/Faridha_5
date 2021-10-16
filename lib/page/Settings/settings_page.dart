@@ -19,7 +19,7 @@ class SettingsPage extends StatelessWidget{
     appBar: AppBar(
       title: Text('Settings'),
       centerTitle: true,
-      backgroundColor: Colors.green,
+      backgroundColor: Colors.teal,
     ),
     body: buildSettingsList(),
   );

@@ -1,5 +1,5 @@
 import 'package:faridha/page/counter_page.dart';
-import 'package:faridha/page/umra_page.dart';
+import 'package:faridha/page/Umrah/umra_page.dart';
 import 'package:faridha/widget/navigation_drawer_widget.dart';
 import 'package:bubble_timeline/bubble_timeline.dart';
 import 'package:bubble_timeline/timeline_item.dart';
@@ -183,9 +183,9 @@ class HaijPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Haij'),
+        title: Text('Hajj'),
         centerTitle: true,
-        //backgroundColor: Colors.green,
+        backgroundColor: Colors.teal,
       ),
       body: Center(
         child: Container(
