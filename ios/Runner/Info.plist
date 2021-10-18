@@ -4,10 +4,7 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<array>
-	<string>en</string>
-	<string>ar</string>
-	</array>
+
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -45,5 +42,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+<key>CFBundleLocalizations</key>
+<array>
+	<string>en</string>
+	<string>nb</string>
+</array>
 </dict>
 </plist>

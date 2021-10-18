@@ -1,12 +1,13 @@
 import 'package:faridha/widget/navigation_drawer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 // this is important info page
 class ImportantInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
-        title: Text('Important Information'),
+        title: Text('Important Information').tr(),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
@@ -24,7 +25,7 @@ class ImportantInfo extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                     Radius.circular(8.0) //                 <--- border radius here
                 ),        ),
-              child: const Center(child:Text('Emergencyُ Numbers', textDirection: TextDirection.ltr,
+              child: const Center(child:Text('Emergencyُ Numbers', //textDirection: TextDirection.ltr,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white,),),),),),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -37,7 +38,7 @@ class ImportantInfo extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                     Radius.circular(8.0) //                 <--- border radius here
                 ),        ),
-              child: const Center(child:Text('Police assistance: 999/ 911.', textDirection: TextDirection.ltr,
+              child: const Center(child:Text('Police assistance: 999/ 911.', //textDirection: TextDirection.ltr,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black,),),),),),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -72,7 +73,7 @@ class ImportantInfo extends StatelessWidget {
                     Radius.circular(8.0) //                 <--- border radius here
                 ),        ),
 
-              child: const Center(child: Text('	Car accidents: 993.',textDirection: TextDirection.ltr,
+              child: const Center(child: Text('	Car accidents: 993.',//textDirection: TextDirection.ltr,
                 style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black,),),),),),
           Padding( padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -85,7 +86,8 @@ class ImportantInfo extends StatelessWidget {
                     Radius.circular(8.0) //                 <--- border radius here
                 ),        ),
               child: const Center(child: Text('Public ambulance services:997.'
-                ,textDirection: TextDirection.ltr,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black,),),),),),
+                ,//textDirection: TextDirection.ltr,
+                style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.black,),),),),),
           Padding( padding: const EdgeInsets.all(8.0),
             child:
             Container(

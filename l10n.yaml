@@ -1,3 +1,0 @@
-arb-dir: lib/l10n
-template-atb-file: app_en.arb
-output-lacalization-file: app_localizations.dart

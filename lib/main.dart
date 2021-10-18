@@ -1,5 +1,6 @@
 // @dart=2.9
 import 'dart:ui';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:faridha/page/Hajj//haij_page.dart';
 import 'package:faridha/page/Hajj/type_of_haij.dart';
@@ -17,56 +18,58 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-// import 'lang/sit_localizations.dart';
-// import 'lang/sit_localizations_delegate.dart';
+import './translations/codegen_loader.g.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '/main.dart';
 // this the page in the app the last edit 27\9\2021
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+ 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(MyApp());
+
+  runApp(
+   EasyLocalization(
+     path: 'assests/translations',
+     supportedLocales: [
+       Locale('en'),
+       Locale('ar')
+     ],
+    fallbackLocale: Locale('en'),
+     assetLoader: CodegenLoader(),
+//steel not done i wll continue tomorrow
+   //https://www.youtube.com/watch?v=cposNqIsyAY  minutes 15:20
+     child:  MyApp()),
+
+  );
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Faridha';
+  static final String title = 'faridha';
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
     create: (context) => NavigationProvider(),
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       title: title,
-      localizationsDelegates: [
-
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [
-        // The order of this list matters. By default, if the
-        // device's locale doesn't exactly match a locale in
-        // supportedLocales then the first locale in
-        // supportedLocales with a matching
-        // Locale.languageCode is used. If that fails then the
-        // first locale in supportedLocales is used.
-        const Locale('en'),
-        const Locale('ar'),
-      ],
       theme: ThemeData(primarySwatch: Colors.teal),
       home: MainPage(),
     ),
   );
 }
-
 class MainPage extends StatefulWidget {
-
   @override
   MainPageState createState() => MainPageState();
 }
-
 class MainPageState extends State<MainPage> {
 
   Material MyItemsNearBy( IconData icon,String heading,int color) {
@@ -85,8 +88,6 @@ class MainPageState extends State<MainPage> {
         child:Center(
           child:Padding(
             padding:const EdgeInsets.all(8.0),
-
-
             child:Row(
               mainAxisAlignment:MainAxisAlignment.center,
               children:[
@@ -97,8 +98,8 @@ class MainPageState extends State<MainPage> {
                     Text(heading,
                       style:TextStyle(
                         color: new Color(color),
-                        fontSize:18.0,
-                      ),),
+                        fontSize:17.0,
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -144,8 +145,8 @@ class MainPageState extends State<MainPage> {
                     Text(heading,
                       style:TextStyle(
                         color: new Color(color),
-                        fontSize:18.0,
-                      ),),
+                        fontSize:17.0,
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -163,53 +164,6 @@ class MainPageState extends State<MainPage> {
         ),),
     );
   }
-  /* Material MyItemsFaridha( IconData icon,String heading,int color) {
-
-    return Material(
-      color:Colors.white,
-      elevation: 14.0,
-      shadowColor:Color(0x8021F336),
-      borderRadius:BorderRadius.circular(24.0),
-      child: FlatButton(onPressed:(){
-        Navigator.push(context,new MaterialPageRoute(builder: (context)=>SelectFaridhaPage()), );
-      },
-        splashColor: Colors.green,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24.0)),
-        child:Center(
-          child:Padding(
-            padding:const EdgeInsets.all(8.0),
-
-
-            child:Row(
-              mainAxisAlignment:MainAxisAlignment.center,
-              children:[
-                Column(
-                  mainAxisAlignment:MainAxisAlignment.center,
-                  children:[
-                    //text
-                    Text(heading,
-                      style:TextStyle(
-                        color: new Color(color),
-                        fontSize:18.0,
-                      ),),
-                    //icon
-                    Material(
-                      color:new Color(color),
-                      borderRadius:BorderRadius.circular(24.0),
-                      child:Padding(
-                          padding:const EdgeInsets.all(12.0),
-                          child:Icon(icon,color:Colors.white,
-                            size:25.0,)
-                      ),),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),),
-    );
-  }*/
   Material MyItemsHaij( IconData icon,String heading,int color) {
 
     return Material(
@@ -238,8 +192,8 @@ class MainPageState extends State<MainPage> {
                     Text(heading,
                       style:TextStyle(
                         color: new Color(color),
-                        fontSize:18.0,
-                      ),),
+                        fontSize:17.0,
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -285,8 +239,8 @@ class MainPageState extends State<MainPage> {
                     Text(heading,
                       style:TextStyle(
                         color: new Color(color),
-                        fontSize:18.0,
-                      ),),
+                        fontSize:17.0,
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -321,7 +275,6 @@ class MainPageState extends State<MainPage> {
           child:Padding(
             padding:const EdgeInsets.all(8.0),
 
-
             child:Row(
               mainAxisAlignment:MainAxisAlignment.center,
               children:[
@@ -329,11 +282,13 @@ class MainPageState extends State<MainPage> {
                   mainAxisAlignment:MainAxisAlignment.center,
                   children:[
                     //text
-                    Text(heading,
-                      style:TextStyle(
-                        color: new Color(color),
-                        fontSize:18.0,
-                      ),),
+                    SizedBox(
+                      child: Text(heading,
+                        style:TextStyle(
+                          color: new Color(color),
+                          fontSize:17.0,
+                        ),).tr(),
+                    ),
                     //icon
                     Material(
                       color:new Color(color),
@@ -379,8 +334,8 @@ class MainPageState extends State<MainPage> {
                     Text(heading,
                       style:TextStyle(
                         color: new Color(color),
-                        fontSize:18.0,
-                      ),),
+                        fontSize:17.0,
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -426,8 +381,8 @@ class MainPageState extends State<MainPage> {
                     Text(heading,
                       style:TextStyle(
                         color: new Color(color),
-                        fontSize:18.0,
-                      ),),
+                        fontSize:17.0,
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -494,8 +449,27 @@ class MainPageState extends State<MainPage> {
   Widget build(BuildContext context) => Scaffold(
     drawer: NavigationDrawerWidget(),
     appBar: AppBar(
+      // actions: <Widget>[
+      //
+      //
+      //   PopupMenuButton<String>(
+      //     onSelected: handleClick,
+      //     itemBuilder: (BuildContext context) {
+      //       return {
+      //         'English',
+      //         'العربية',
+      //
+      //       }.map((String choice) {
+      //         return PopupMenuItem<String>(
+      //           value: choice,
+      //           child: Text(choice),
+      //         );
+      //       }).toList();
+      //     },
+      //   ),
+      // ],
       backgroundColor: Colors.teal,
-      title: Text('Faridha'),
+      title: Text('Faridha').tr(),
       centerTitle: true,
 
     ),
@@ -506,9 +480,8 @@ class MainPageState extends State<MainPage> {
       padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 8.0,),
       children:[
         MyItemsTime("Date",),
-        //MyItemsFaridha(Icons.account_circle_rounded,"Select type of Faridha",0xFF4CAF50),
         MyItemsUmra(Icons.account_circle_rounded,"Umrah",11111122222222222),
-        MyItemsHaij(Icons.account_circle_rounded,"haij",11111122222222222),
+        MyItemsHaij(Icons.account_circle_rounded,"hajj",11111122222222222),
         MyItemsCounter(Icons.alarm_add,"Counter",11111122222222222),
         MyItemsSupp(Icons.article,"Supplications",11111122222222222),
         MyItemsHoly(Icons.location_on,"Holy places",11111122222222222),
@@ -517,7 +490,6 @@ class MainPageState extends State<MainPage> {
       ],
       staggeredTiles: [
         StaggeredTile.extent(2, 150.0),
-        //StaggeredTile.extent(2, 150.0),
         StaggeredTile.extent(1, 150.0),
         StaggeredTile.extent(1, 150.0),
         StaggeredTile.extent(1, 150.0),
@@ -528,5 +500,6 @@ class MainPageState extends State<MainPage> {
 
       ],
     ),
+
   );
 }

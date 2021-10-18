@@ -1,5 +1,6 @@
 import 'package:faridha/widget/navigation_drawer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 
 
@@ -24,7 +25,7 @@ class CounterPageState extends State<CounterPage> {
     return new Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: new AppBar(
-        title: new Text('Counter'),
+        title: new Text('Counter').tr(),
         centerTitle: true,
       ),
       body: new Column(

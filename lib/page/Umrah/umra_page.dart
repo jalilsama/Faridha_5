@@ -11,7 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 //import 'package:progress_timeline/progress_timeline.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'quest_umrah_page.dart';
 import 'throat_page.dart';
 // import 'package:Faridea/page/icon_svg/icon_svg.dart';
@@ -23,7 +23,7 @@ class UmraPage extends StatelessWidget {
     return Scaffold(
       // backgroundColor: Color.fromRGBO(245,245,245, 5),
       appBar: AppBar(
-        title: Text('Umrah Steps'),
+        title: Text('Umrah Steps').tr(),
         centerTitle: true,
         //backgroundColor: Colors.green,
       ),

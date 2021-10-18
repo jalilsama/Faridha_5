@@ -2,6 +2,7 @@ import 'package:faridha/widget/navigation_drawer_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 // this is Miqat page
 class MiqatPage extends StatelessWidget {
@@ -11,7 +12,7 @@ class MiqatPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
-        title: Text('Miqat'),
+        title: Text('Miqat').tr(),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),

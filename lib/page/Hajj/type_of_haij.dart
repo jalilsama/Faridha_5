@@ -12,6 +12,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../test_file.dart';
 class TypeOfHaij extends StatefulWidget {
 
   @override
@@ -50,7 +52,7 @@ class TypeOfHaijState extends State<TypeOfHaij> {
                       style:TextStyle(
                         color: new Color(color),
                         fontSize:18.0,
-                      ),),
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -97,7 +99,7 @@ class TypeOfHaijState extends State<TypeOfHaij> {
                       style:TextStyle(
                         color: new Color(color),
                         fontSize:18.0,
-                      ),),
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -144,7 +146,7 @@ class TypeOfHaijState extends State<TypeOfHaij> {
                       style:TextStyle(
                         color: new Color(color),
                         fontSize:18.0,
-                      ),),
+                      ),).tr(),
                     //icon
                     Material(
                       color:new Color(color),
@@ -166,10 +168,10 @@ class TypeOfHaijState extends State<TypeOfHaij> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    drawer: NavigationDrawerWidget(),
+    //drawer: NavigationDrawerWidget(),
     appBar: AppBar(
       backgroundColor: Colors.teal,
-      title: Text('type of hajj'),
+      title: Text('type of hajj').tr(),
       centerTitle: true,
     ),
     body:StaggeredGridView.count(
@@ -184,15 +186,15 @@ class TypeOfHaijState extends State<TypeOfHaij> {
         MyItemsTamattu(Icons.account_circle_rounded,"TAMATTU",11111122222222222),
 
 
+
       ],
       staggeredTiles: [
         StaggeredTile.extent(2, 150.0),
         StaggeredTile.extent(2, 150.0),
         StaggeredTile.extent(2, 150.0),
-
-
-
+        StaggeredTile.extent(2, 150.0),
       ],
     ),
+
   );
 }

@@ -10,7 +10,7 @@ import 'package:faridha/page/supplications_page.dart';
 import 'package:faridha/provider/navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../main.dart';
 
 
@@ -134,7 +134,7 @@ class NavigationDrawerWidget extends StatelessWidget {
       )
           : ListTile(
         leading: leading,
-        title: Text(text, style: TextStyle(color: color, fontSize: 10)),
+        title: Text(text, style: TextStyle(color: color, fontSize: 10)).tr(),
         onTap: onClicked,
       ),
     );

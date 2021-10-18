@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:settings_ui/settings_ui.dart';
-
+import '../../main.dart';
+import '/translations/codegen_loader.g.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:easy_localization/easy_localization.dart';
 class LanguagesScreen extends StatefulWidget {
   @override
   _LanguagesScreenState createState() => _LanguagesScreenState();
@@ -21,15 +24,18 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
             SettingsTile(
               title: "English",
               trailing: trailingWidget(0),
-              onPressed: (BuildContext context) {
-                changeLanguage(0);
+
+              onPressed: (BuildContext context) async{
+              await context.setLocale(Locale('en'));
+
               },
             ),
             SettingsTile(
-              title: "Spanish",
+              title: "العربية",
               trailing: trailingWidget(1),
-              onPressed: (BuildContext context) {
-                changeLanguage(1);
+              onPressed: (BuildContext context) async{
+                await context.setLocale(Locale('ar'));
+
               },
             ),
             SettingsTile(

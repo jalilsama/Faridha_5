@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:faridha/page/icon_svg/icon_svg.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class HaijPage extends StatelessWidget {
   final List<TimelineItem> _items = [
@@ -183,7 +184,7 @@ class HaijPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hajj'),
+        title: Text('Hajj Steps').tr(),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),

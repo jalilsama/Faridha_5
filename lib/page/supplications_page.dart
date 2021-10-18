@@ -1,5 +1,6 @@
 import 'package:faridha/widget/navigation_drawer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 // this is Supplications page
 class SupplicationsPage extends StatelessWidget {
 
@@ -7,7 +8,7 @@ class SupplicationsPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
-        title: Text('Supplications'),
+        title: Text('Supplications').tr(),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
@@ -56,7 +57,7 @@ class SupplicationsPage extends StatelessWidget {
               borderRadius:BorderRadius.circular(5.0),
               child: const Center(child: Text('Rabbana wa-jalna Muslimayni laka wa min Dhurriyatina Ummatan Muslimatan laka wa Arina Manasikana wa tub alayna innaka antat-Tawwabu-Raheem '
                   '\n\nOur Lord! Make of us Muslims, bowing to Thy (Will), and of our progeny a people Muslim, bowing to Thy (will); and show us our place for the celebration of (due) rites; and turn unto us (in Mercy); for Thou art the Oft-Returning, Most Merciful.'
-                ,textDirection: TextDirection.ltr,
+                ,//textDirection: TextDirection.ltr,
                 style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.black,),),),),),
 
 
